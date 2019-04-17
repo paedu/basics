@@ -1,0 +1,18 @@
+<configuration>
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<!-- Das Pattern muss eine bestimmte Form haben.
+			siehe https://confluence.sbb.ch/display/ESTA/2.5%29+Logging+und+Korrelation
+			und https://confluence.sbb.ch/x/uV9aKw -->
+			<pattern>[%d] [%t] %level %logger{10} - corid=%X{akkaSource} - %m%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- Logger für Anpassungen individueller Klassen -->
+	<logger name="ch.sbb.ausbildung" level="DEBUG"></logger>
+
+	<!-- Root Logger (alle Level, wenn nicht spezifischer überschrieben) -->
+	<root level="DEBUG">
+		<appender-ref ref="STDOUT"/>
+	</root>
+</configuration>
